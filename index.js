@@ -2,9 +2,11 @@ const express = require('express')
 const app = express()
 
 app.get('/', (req, res) => {
-    res.send('COMPLETELY NEW VERSION !')
+    res.send('Je pense que tout va bien !')
 })
-
+app.get('/build', (req, res) => {
+    console.log('ok')
+})
 app.get('/build/:build_number', (req, res) => {
     console.log('received new build : ', req.params.build_number)
     res.send('new build ? ' + req.params.build_number)
