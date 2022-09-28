@@ -5,7 +5,7 @@ const { stderr } = require('process')
 const shell = require('shelljs')
 
 app.get('/', (req, res) => {
-    res.send('Je pense que tout va bien !!')
+    res.send('Je dois avoir un résultat fini ici')
 })
 app.get('/build', (req, res) => {
     console.log('ok')
