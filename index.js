@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const { exec } = require('child_process')
 const { stderr } = require('process')
+const shell = require('shelljs')
 
 app.get('/', (req, res) => {
     res.send('Je pense que tout va bien !')
@@ -11,18 +12,8 @@ app.get('/build', (req, res) => {
 })
 app.get('/build/:build_number', (req, res) => {
     console.log('received new build : ', req.params.build_number)
-
-    exec('docker ps -a', (err, stdout, stderr) => {
-        if ( err ) {
-            console.log('exec err ', err)
-            return
-        }
-        if ( stderr ) {
-            console.log('stderr err ', stderr)
-            return
-        }
-        console.log('exec stdout : ', stdout)
-    })
+    console.log( shell.exec('./deploy.sh') )
+    
     res.send('new build ? ' + req.params.build_number)
 
 })
